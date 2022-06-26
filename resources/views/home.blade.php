@@ -615,7 +615,7 @@
             <div class="pt-2 row footer-center">
                 <div class="footer-map-container d-sm-block col-lg-4 col-md-6">
                     <a class="d-flex navbar-brand position-relative" href="/">
-                        <img src=/assets/images/logo.png" alt="Logo" class="pb-3 img-fluid" style="object-fit: contain;max-width: 150px;filter: brightness(0) invert(1);">
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="pb-3 img-fluid" style="object-fit: contain;max-width: 150px;filter: brightness(0) invert(1);">
                     </a>
                     <ul class="list-unstyled d-flex ps-2">
                         <li class="fs-14">
