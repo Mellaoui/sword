@@ -26,4 +26,5 @@ require __DIR__.'/auth.php';
 Route::get('/', [HomeController::class,'index']);
 Route::get('/blog', [BlogController::class,'index']);
 Route::get('/{id}', [HomeController::class,'show'])->name('presentation.show');
-Route::get('/ar', [PostController::class,'localar']);
+Route::get('/blog',[BlogController::class,'index'])->name('blog.index');
+Route::get('/blog/{id}', [HomeController::class,'show'])->name('blog.show');

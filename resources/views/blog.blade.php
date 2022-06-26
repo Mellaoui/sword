@@ -208,72 +208,37 @@ background-size: cover;padding: 55px 0;;overflow: hidden;height: 300px;">
     <div>
         <div class="py-5 px-sm-5 px-2">
             <div class="d-flex flex-wrap">
+                @if (count($posts) > 0)
+                @foreach ($posts as $post)
                 <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center mb-5 pe-sm-1">
-                    <a href="details-blog.html" class="card card-blog border-0 position-relative overflow-visible b-15" style="background: url('../assets/images/slide1.jpg') no-repeat center;background-size: cover;">
+                    <a href="details-blog.html" class="card card-blog border-0 position-relative overflow-visible b-15" style="background: url('{{ $post->getFirstMedia('blog-images')->getUrl() }}') no-repeat center;background-size: cover;">
                         <div class="overlay-slide w-100 h-100 b-15"></div>
                         <div class="card-body position-absolute border-0 pt-0 w-100 h-100" style="top: 0;left: 0;z-index: 5;">
                             <div class="mt-4 ms-3">
                                 <p class="text-white my-0">Catégories</p>
                             </div>
                             <div class="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center px-5 top-0" style="left: 0;">
-                                <p class="fs-15 text-white text-center">12 feb 2024</p>
-                                <h2 class="text-white line-clamp2 fs-5 text-center fw-600" style="line-height: 1.8rem">service avec un nom max 2 ligne</h2>
+                                <p class="fs-15 text-white text-center">{{ $post->created_at }}</p>
+                                <h2 class="text-white line-clamp2 fs-5 text-center fw-600" style="line-height: 1.8rem">{{ $post->title }}</h2>
                             </div>
+                           
                             <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
-                                <img src="../assets/images/slide1.jpg" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
-                                <div class="d-flex flex-column">
-                                    <p class="text-white my-0 fw-500">Publié par</p>
-                                    <p class="text-white my-0 fw-600">Nom de l'auteur</p>
-                                </div>
+                                <img src="{{ $post->getFirstMedia('blog-images')->getUrl() }}" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
                             </div>
-
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center mb-5 pe-sm-1">
-                    <a href="details-blog.html" class="card card-blog border-0 position-relative overflow-visible b-15" style="background: url('../assets/images/slide2.jpg') no-repeat center;background-size: cover;">
-                        <div class="overlay-slide w-100 h-100 b-15"></div>
-                        <div class="card-body position-absolute border-0 pt-0 w-100 h-100" style="top: 0;left: 0;z-index: 5;">
-                            <div class="mt-4 ms-3">
-                                <p class="text-white my-0">Catégories</p>
+                @endforeach
+                    @else
+                    <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center mb-5 pe-sm-1">
+                        <a href="details-blog.html" class="card card-blog border-0 position-relative overflow-visible b-15" style="background: url('../assets/images/slide1.jpg') no-repeat center;background-size: cover;">
+                            <div class="overlay-slide w-100 h-100 b-15"></div>
+                            <div class="card-body position-absolute border-0 pt-0 w-100 h-100" style="top: 0;left: 0;z-index: 5;">
+                                <H3>No posts yet</H3>
                             </div>
-                            <div class="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center px-5 top-0" style="left: 0;">
-                                <p class="fs-15 text-white text-center">12 feb 2024</p>
-                                <h2 class="text-white line-clamp2 fs-5 text-center fw-600" style="line-height: 1.8rem">service avec un nom max 2 ligne</h2>
-                            </div>
-                            <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
-                                <img src="../assets/images/slide2.jpg" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
-                                <div class="d-flex flex-column">
-                                    <p class="text-white my-0 fw-500">Publié par</p>
-                                    <p class="text-white my-0 fw-600">Nom de l'auteur</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center mb-5 pe-sm-1">
-                    <a href="details-blog.html" class="card card-blog border-0 position-relative overflow-visible b-15" style="background: url('../assets/images/slide3.jpg') no-repeat center;background-size: cover;">
-                        <div class="overlay-slide w-100 h-100 b-15"></div>
-                        <div class="card-body position-absolute border-0 pt-0 w-100 h-100" style="top: 0;left: 0;z-index: 5;">
-                            <div class="mt-4 ms-3">
-                                <p class="text-white my-0">Catégories</p>
-                            </div>
-                            <div class="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center px-5 top-0" style="left: 0;">
-                                <p class="fs-15 text-white text-center">12 feb 2024</p>
-                                <h2 class="text-white line-clamp2 fs-5 text-center fw-600" style="line-height: 1.8rem">service avec un nom max 2 ligne</h2>
-                            </div>
-                            <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
-                                <img src="../assets/images/slide3.jpg" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
-                                <div class="d-flex flex-column">
-                                    <p class="text-white my-0 fw-500">Publié par</p>
-                                    <p class="text-white my-0 fw-600">Nom de l'auteur</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
