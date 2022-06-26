@@ -2,19 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ServiceResource\Pages;
-use App\Filament\Resources\ServiceResource\RelationManagers;
+use App\Filament\Resources\PresentationResource\Pages;
+use App\Filament\Resources\PresentationResource\RelationManagers;
+use App\Models\Presentation;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use App\Models\Service;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 
-class ServiceResource extends Resource
+class PresentationResource extends Resource
 {
-    protected static ?string $model = Service::class;
+    protected static ?string $model = Presentation::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -31,9 +31,7 @@ class ServiceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('content'),
-                Tables\Columns\TextColumn::make('published_at')
-                    ->date(),
+                Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -54,12 +52,11 @@ class ServiceResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListServices::route('/'),
-            'create' => Pages\CreateService::route('/create'),
-            'edit' => Pages\EditService::route('/{record}/edit'),
+            'index' => Pages\ListPresentations::route('/'),
+            'create' => Pages\CreatePresentation::route('/create'),
+            'edit' => Pages\EditPresentation::route('/{record}/edit'),
         ];
     }
-
 
     public static function getFormSchema(string $layout = Forms\Components\Grid::class){
 
@@ -71,7 +68,7 @@ class ServiceResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\MarkdownEditor::make('content')
+                        Forms\Components\MarkdownEditor::make('description')
                             ->columnSpan([
                                 'sm' => 2,
                             ]),
@@ -92,5 +89,3 @@ class ServiceResource extends Resource
 
     }
 }
-
-

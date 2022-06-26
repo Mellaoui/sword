@@ -63,7 +63,7 @@
                         <i class="bi bi-box-arrow-down d-lg-none" style="font-size: 1.5rem;"></i>
                         <p class="my-0 fs-6 d-lg-block d-none">Inscription</p>
                     </a>
-                    <a href="login.html" class="d-flex align-items-center">
+                    <a href="/login" class="d-flex align-items-center">
                         <i class="bi bi-box-arrow-right d-lg-none" style="font-size: 1.5rem;"></i>
                         <p class="my-0 fs-6 d-lg-block d-none">Connection</p>
                     </a>
@@ -278,18 +278,16 @@
                             <div class="bg-primary me-2" style="width: 50px;height: 2px;"></div>
                             Présentation
                         </h5>
-                        @if (count($posts) > 0)
-                        <h2 class="mt-3 fs-1 fw-bold">{{ $posts[0]->title }}</h2>
+                        @if (count($presentations) > 0)
                         
-                        
-                       
+                        @foreach ( $presentations as $presentation)
                         <p class="mt-4 mb-0 clr-555">
-                            {{ $posts[0]->content }}
+                            {{ $presentation->title }}
                             <br> <br>
-                            Présente dans plus de 04 pays, SWORD Corporation offre un éventail large d’activités et de services. Son objectif principal est d’optimiser les projets de ses clients tout en permettant le développement professionnel de ses consultants.
-                            <br> <br>
-                            SWORD Corporation est spécialisée dans différents domaines tels que, le consulting, le portage salarial, le recrutement, la logistique, le transport sécurités, la sécurité et gardiennage, l’assistance technique et le déploiement des solutions.
+                        {{ $presentation->description }}
                         </p>
+                        @endforeach
+                        
                         @else
                         <h2 class="mt-3 fs-1 fw-bold">No Posts Yet</h2>
                        
@@ -301,7 +299,7 @@
                             SWORD Corporation est spécialisée dans différents domaines tels que, le consulting, le portage salarial, le recrutement, la logistique, le transport sécurités, la sécurité et gardiennage, l’assistance technique et le déploiement des solutions.
                         </p>
                         @endif
-                        <a href="presentation.html" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
+                        <a href="{{ route('presentation.show', $presentations[0]->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
                             Avoir plus de détails
                         </a>
 
@@ -316,7 +314,7 @@
                     <div class="bg-primary" style="height: 5px;width: 60px;"></div>
                 </div>
             </div>
-
+            @if ( count($services) > 0 )
             <div class="position-relative">
                 <div class="swiper-container mySwiper4">
                     <div class="swiper-wrapper">
@@ -332,11 +330,14 @@
                                                 <img class="" src="{{ asset('images/check.png') }}" style="filter: brightness(0) invert(1);height: 50px;width: 50px;">
                                             </div>
                                         </div>
+                                        @foreach ($services as $service)
                                         <a href="details-services.html">
-                                            <h4 class="text-center fw-600">Assistance et Conseil</h4>
+                                            <h4 class="text-center fw-600">{{ $service->title }}</h4>
                                         </a>
-                                        <p class="text-center line-clamp2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, labore.</p>
+                                        <p class="text-center line-clamp2">{{ $service->content }}</p>
                                         <a href="details-services.html" class="px-4 py-2 b-15 btn-ms position-absolute" style="bottom: -20px;left: 50%;transform: translateX(-50%);">Voir service</a>
+                                        @endforeach
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -409,6 +410,28 @@
                 <div class="swiper-button-prev swiper-button-prev4" style="left: 5px;top: 51%;transform: scale(.85);"></div>
                 <div class="swiper-button-next swiper-button-next4" style="right: 5px;top: 51%;transform: scale(.85);"></div>
             </div>
+            @else
+            <div class="swiper-slide">
+                <div class="py-4">
+                    <div class="overflow-visible rounded card card-services position-relative" style="height: 380px;border-top: 3px solid #21759B;">
+                        <div class="w-100 h-max img-services">
+                            <img class="card-img-top obj-cover" src="{{ asset('images/taxi.jpg') }}" alt="" style="height: 200px;">
+                        </div>
+                        <div class="pt-0 border-0 card-body">
+                            <div class="p-1 mb-3 d-flex justify-content-center mt-n5 position-relative" style="z-index: 3;">
+                                <div class="p-2 w-max h-max rounded-circle bg-primary">
+                                    <img class="" src="{{ asset('images/check.png ') }}" style="filter: brightness(0) invert(1);height: 50px;width: 50px;">
+                                </div>
+                            </div>
+                            <a href="transport.html">
+                                <h4 class="text-center fw-600">No Service found</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+            
         </section>
         <section class="px-3 pt-5 pb-pres px-sm-5 d-flex justify-content-between" id="presentation">
             <div class="px-3 px-sm-5 position-relative d-flex flex-lg-row flex-column col-12">
@@ -421,26 +444,19 @@
                             Nous rassemblons toutes les activités de soutien qui contribuent au bon fonctionnement de l’entreprise,
                             à savoir, la gestion des :
                         </p>
+                        @if (count($reasons) > 0)
+                            @foreach ($reasons as $reason )
+                            <div class="mt-2 d-flex align-items-center">
+                                <img class="me-2" src="{{ asset('images/check.png ') }}" alt="" style="width: 30px;height: 30px;object-fit: contain;filter: invert(57%) sepia(62%) saturate(2430%) hue-rotate(2deg) brightness(99%) contrast(103%);">
+                                <p class="my-0 clr-555">{{ $reason->reasons }}</p>
+                            </div>
+                            @endforeach 
+                        @else
                         <div class="mt-2 d-flex align-items-center">
                             <img class="me-2" src="{{ asset('images/check.png ') }}" alt="" style="width: 30px;height: 30px;object-fit: contain;filter: invert(57%) sepia(62%) saturate(2430%) hue-rotate(2deg) brightness(99%) contrast(103%);">
-                            <p class="my-0 clr-555">Les ressources Humaines</p>
+                            <p class="my-0 clr-555">No reasons yet</p>
                         </div>
-                        <div class="mt-2 d-flex align-items-center">
-                            <img class="me-2" src="{{ asset('images/check.png ') }}" alt="" style="width: 30px;height: 30px;object-fit: contain;filter: invert(57%) sepia(62%) saturate(2430%) hue-rotate(2deg) brightness(99%) contrast(103%);">
-                            <p class="my-0 clr-555">La sécurité des biens et des personnes</p>
-                        </div>
-                        <div class="mt-2 d-flex align-items-center">
-                            <img class="me-2" src="{{ asset('images/check.png ') }}" alt="" style="width: 30px;height: 30px;object-fit: contain;filter: invert(57%) sepia(62%) saturate(2430%) hue-rotate(2deg) brightness(99%) contrast(103%);">
-                            <p class="my-0 clr-555">Le transport du personnel et le transport VIP, du personnel et logistique</p>
-                        </div>
-                        <div class="mt-2 d-flex align-items-center">
-                            <img class="me-2" src="{{ asset('images/check.png ') }}" alt="" style="width: 30px;height: 30px;object-fit: contain;filter: invert(57%) sepia(62%) saturate(2430%) hue-rotate(2deg) brightness(99%) contrast(103%);">
-                            <p class="my-0 clr-555">L’entretien et la maintenance des locaux, bureaux et résidences</p>
-                        </div>
-                        <div class="mt-2 d-flex align-items-center">
-                            <img class="me-2" src="{{ asset('images/check.png ') }}" alt="" style="width: 30px;height: 30px;object-fit: contain;filter: invert(57%) sepia(62%) saturate(2430%) hue-rotate(2deg) brightness(99%) contrast(103%);">
-                            <p class="my-0 clr-555">Organisation et Gestion d’évènements</p>
-                        </div>
+                        @endif
                         <a href="presentation.html" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
                             Avoir plus de détails
                         </a>
@@ -459,11 +475,12 @@
                 <div class="bg-primary" style="height: 5px;width: 60px;"></div>
             </div>
             <div class="swiper-container mySwiper2">
+                @foreach ($partenaires as $partenaire )
                 <div class="swiper-wrapper">
                     <a href="#" class="swiper-slide">
                         <div class="p-3">
                             <div class="px-5 py-3 overflow-hidden client-anim position-relative">
-                                <img class="client-img1" src="assets/images/safex.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
+                                <img class="client-img1" src="{{  $partenaire->getMedia() }}" alt="" style="object-fit:contain;width: 100px;height: 100px;">
                                 <img class="client-img2" src="assets/images/safex.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
                             </div>
                         </div>
@@ -517,6 +534,8 @@
                         </div>
                     </a>
                 </div>
+                @endforeach
+                
             </div>
             <div class="swiper-button-prev swiper-button-prev2" style="left: 35px;top: 65%;transform: scale(.85);"></div>
             <div class="swiper-button-next swiper-button-next2" style="right: 35px;top: 65%;transform: scale(.85);"></div>

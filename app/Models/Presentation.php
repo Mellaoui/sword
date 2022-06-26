@@ -7,14 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Service extends Model implements HasMedia
+class Presentation extends Model implements HasMedia
 {
-    use HasFactory ;
+    use HasFactory;
     use InteractsWithMedia;
 
-    protected $fillable= 
-        [
-            'title',
-            'content',
-        ];
+    protected $fillable = ["title" , "description"];
 }
