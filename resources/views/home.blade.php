@@ -286,6 +286,9 @@
                             <br> <br>
                         {{ $presentation->description }}
                         </p>
+                        <a href="{{ route('presentation.show', $presentations->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
+                            Avoir plus de détails
+                        </a>
                         @endforeach
                         
                         @else
@@ -298,11 +301,10 @@
                             <br> <br>
                             SWORD Corporation est spécialisée dans différents domaines tels que, le consulting, le portage salarial, le recrutement, la logistique, le transport sécurités, la sécurité et gardiennage, l’assistance technique et le déploiement des solutions.
                         </p>
-                        @endif
-                        <a href="{{ route('presentation.show', $presentations[0]->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
+                        <a href="#" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
                             Avoir plus de détails
                         </a>
-
+                        @endif
                     </div>
                 </div>
             </div>
