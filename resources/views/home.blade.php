@@ -461,102 +461,44 @@
             <div class="position-relative">
                 <div class="swiper-container mySwiper3">
                     <div class="swiper-wrapper">
+                       
+                       
+                      
+                        @if (count($posts) > 0)
+                             @foreach ($posts as $post)
+                        <div class="swiper-slide">
+                            <div class="py-4">
+                                <a href="details-blog.html" class="overflow-visible border-0 card card-blog position-relative b-15" style="background: url('{{ $post->getFirstMedia('blog-images')->getUrl() }}') no-repeat center;background-size: cover;">
+                                    <div class="overlay-slide w-100 h-100 b-15"></div>
+                                    <div class="pt-0 border-0 card-body position-absolute w-100 h-100" style="top: 0;left: 0;z-index: 5;">
+                                        <div class="mt-4 ms-3">
+                                            <p class="my-0 text-white w-max">Catégories</p>
+                                        </div>
+                                        <div class="top-0 px-5 position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center" style="left: 0;">
+                                            <p class="text-center text-white fs-15">{{ $post->created_at }}</p>
+                                            <h2 class="text-center text-white line-clamp2 fs-5 fw-600" style="line-height: 1.8rem">{{ $post->title }}</h2>
+                                        </div>
+                                        <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
+                                            <img src="assets/images/slide1.jpg" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        @endforeach
+                        @else
                         <div class="swiper-slide">
                             <div class="py-4">
                                 <a href="details-blog.html" class="overflow-visible border-0 card card-blog position-relative b-15" style="background: url('../assets/images/slide1.jpg') no-repeat center;background-size: cover;">
                                     <div class="overlay-slide w-100 h-100 b-15"></div>
                                     <div class="pt-0 border-0 card-body position-absolute w-100 h-100" style="top: 0;left: 0;z-index: 5;">
-                                        <div class="mt-4 ms-3">
-                                            <p class="my-0 text-white w-max">Catégories</p>
-                                        </div>
-                                        <div class="top-0 px-5 position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center" style="left: 0;">
-                                            <p class="text-center text-white fs-15">12 feb 2024</p>
-                                            <h2 class="text-center text-white line-clamp2 fs-5 fw-600" style="line-height: 1.8rem">service avec un nom max 2 ligne</h2>
-                                        </div>
-                                        <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
-                                            <img src="assets/images/slide1.jpg" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
-                                            <div class="d-flex flex-column">
-                                                <p class="my-0 text-white w-max fw-500">Publié par</p>
-                                                <p class="my-0 text-white fw-600 w-max">Nom de l'auteur</p>
-                                            </div>
-                                        </div>
-
+                                       <h3>No Posts yet</h3>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="py-4">
-                                <a href="details-blog.html" class="overflow-visible border-0 card card-blog position-relative b-15" style="background: url('../assets/images/slide2.jpg') no-repeat center;background-size: cover;">
-                                    <div class="overlay-slide w-100 h-100 b-15"></div>
-                                    <div class="pt-0 border-0 card-body position-absolute w-100 h-100" style="top: 0;left: 0;z-index: 5;">
-                                        <div class="mt-4 ms-3">
-                                            <p class="my-0 text-white w-max">Catégories</p>
-                                        </div>
-                                        <div class="top-0 px-5 position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center" style="left: 0;">
-                                            <p class="text-center text-white fs-15">12 feb 2024</p>
-                                            <h2 class="text-center text-white line-clamp2 fs-5 fw-600" style="line-height: 1.8rem">service avec un nom max 2 ligne</h2>
-                                        </div>
-                                        <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
-                                            <img src="assets/images/slide2.jpg" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
-                                            <div class="d-flex flex-column">
-                                                <p class="my-0 text-white fw-500 w-max">Publié par</p>
-                                                <p class="my-0 text-white fw-600 w-max">Nom de l'auteur</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="py-4">
-                                <a href="details-blog.html" class="overflow-visible border-0 card card-blog position-relative b-15" style="background: url('../assets/images/slide3.jpg') no-repeat center;background-size: cover;">
-                                    <div class="overlay-slide w-100 h-100 b-15"></div>
-                                    <div class="pt-0 border-0 card-body position-absolute w-100 h-100" style="top: 0;left: 0;z-index: 5;">
-                                        <div class="mt-4 ms-3">
-                                            <p class="my-0 text-white w-max">Catégories</p>
-                                        </div>
-                                        <div class="top-0 px-5 position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center" style="left: 0;">
-                                            <p class="text-center text-white fs-15">12 feb 2024</p>
-                                            <h2 class="text-center text-white line-clamp2 fs-5 fw-600" style="line-height: 1.8rem">service avec un nom max 2 ligne</h2>
-                                        </div>
-                                        <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
-                                            <img src="assets/images/slide3.jpg" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
-                                            <div class="d-flex flex-column">
-                                                <p class="my-0 text-white fw-500 w-max">Publié par</p>
-                                                <p class="my-0 text-white fw-600 w-max">Nom de l'auteur</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="py-4">
-                                <a href="details-blog.html" class="overflow-visible border-0 card card-blog position-relative b-15" style="background: url('../assets/images/slide1.jpg') no-repeat center;background-size: cover;">
-                                    <div class="overlay-slide w-100 h-100 b-15"></div>
-                                    <div class="pt-0 border-0 card-body position-absolute w-100 h-100" style="top: 0;left: 0;z-index: 5;">
-                                        <div class="mt-4 ms-3">
-                                            <p class="my-0 text-white w-max">Catégories</p>
-                                        </div>
-                                        <div class="top-0 px-5 position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center" style="left: 0;">
-                                            <p class="text-center text-white fs-15">12 feb 2024</p>
-                                            <h2 class="text-center text-white line-clamp2 fs-5 fw-600" style="line-height: 1.8rem">service avec un nom max 2 ligne</h2>
-                                        </div>
-                                        <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
-                                            <img src="assets/images/slide1.jpg" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
-                                            <div class="d-flex flex-column">
-                                                <p class="my-0 text-white fw-500 w-max">Publié par</p>
-                                                <p class="my-0 text-white fw-600 w-max">Nom de l'auteur</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="swiper-button-prev swiper-button-prev3" style="left: 5px;top: 51%;transform: scale(.85);"></div>
@@ -615,7 +557,7 @@
             <div class="pt-2 row footer-center">
                 <div class="footer-map-container d-sm-block col-lg-4 col-md-6">
                     <a class="d-flex navbar-brand position-relative" href="/">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="pb-3 img-fluid" style="object-fit: contain;max-width: 150px;filter: brightness(0) invert(1);">
+                        <img src="/assets/images/logo.png" alt="Logo" class="pb-3 img-fluid" style="object-fit: contain;max-width: 150px;filter: brightness(0) invert(1);">
                     </a>
                     <ul class="list-unstyled d-flex ps-2">
                         <li class="fs-14">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Presentation;
+use App\Models\Blog;
 use App\Models\Service;
 use App\Models\Partenaire;
 use App\Models\PourquoinousChoisir;
@@ -20,13 +21,15 @@ class HomeController extends Controller
         $presentations = Presentation::all();
         $partenaires = Partenaire::all();
         $reasons = PourquoinousChoisir::all();
-        $services = Service::all();//
+        $services = Service::all();
+        $posts = Blog::all();
 
         // $services_images = Service::first()->getFirstMedia('service-images')->getUrl();//
         // dd($services_images);
 
         // dd($reasons);
         return view('home',[
+            "posts" => $posts,
             'presentations' => $presentations,
             'services' => $services,
             'partenaires' => $partenaires,
