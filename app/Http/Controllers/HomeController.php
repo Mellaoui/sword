@@ -21,6 +21,10 @@ class HomeController extends Controller
         $partenaires = Partenaire::all();
         $reasons = PourquoinousChoisir::all();
         $services = Service::all();//
+
+        // $services_images = Service::first()->getFirstMedia('service-images')->getUrl();//
+        // dd($services_images);
+
         // dd($reasons);
         return view('home',[
             'presentations' => $presentations,

@@ -32,6 +32,9 @@ class ServiceResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('content'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('service-image')
+                ->label('Image')
+                ->collection('service-images'),
                 Tables\Columns\TextColumn::make('published_at')
                     ->date(),
                 Tables\Columns\TextColumn::make('created_at')

@@ -32,6 +32,9 @@ class PartenaireResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('partenaire-image')
+                    ->label('Image')
+                    ->collection('partenaire-images'),   
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
             ])
@@ -64,7 +67,7 @@ class PartenaireResource extends Resource
                     $layout::make()
                         ->schema([
                             SpatieMediaLibraryFileUpload::make('media')
-                                        ->collection('service-images')
+                                        ->collection('partenaire-images')
                                         ->multiple()
                                         ->maxFiles(5)
                         ])

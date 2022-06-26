@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PourquoinousChoisirResource\Pages;
 use App\Filament\Resources\PourquoinousChoisirResource\RelationManagers;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use App\Models\PourquoinousChoisir;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -59,4 +60,6 @@ class PourquoinousChoisirResource extends Resource
             'edit' => Pages\EditPourquoinousChoisir::route('/{record}/edit'),
         ];
     }
+
+    
 }

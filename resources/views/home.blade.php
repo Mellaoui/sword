@@ -264,11 +264,14 @@
             </div>
         </section>
         <section class="px-3 pt-pres pb-pres px-sm-5 d-flex justify-content-between" id="presentation">
+            @if (count($presentations) > 0)
+                        
+                        @foreach ( $presentations as $presentation)
             <div class="px-3 px-sm-5 position-relative d-flex flex-lg-row flex-column col-12">
                 <div id="trigger-left"></div>
 
                 <div class="mb-5 col-lg-6 me-lg-5 mb-lg-0 position-relative d-flex justify-content-center " id="translate-left">
-                    <img class="mt-3 img-pres h-100 me-auto mt-lg-0 b-15" src="{{ asset('images/slide1.jpg') }}" alt="" loading="lazy" style="object-fit: cover;border-top: 5px solid #21759B;border-left: 5px solid #21759B;">
+                    <img class="mt-3 img-pres h-100 me-auto mt-lg-0 b-15" src="{{ $presentation->getFirstMedia('presentation-images')->getUrl() }}" alt="" loading="lazy" style="object-fit: cover;border-top: 5px solid #21759B;border-left: 5px solid #21759B;">
                 </div>
 
                 <div style="margin: 0 auto;">
@@ -278,9 +281,7 @@
                             <div class="bg-primary me-2" style="width: 50px;height: 2px;"></div>
                             Présentation
                         </h5>
-                        @if (count($presentations) > 0)
-                        
-                        @foreach ( $presentations as $presentation)
+                        <h2 class="mt-3 fs-1 fw-bold">{{ $presentation->title }}</h2>
                         <p class="mt-4 mb-0 clr-555">
                             {{ $presentation->title }}
                             <br> <br>
@@ -289,21 +290,35 @@
                         <a href="{{ route('presentation.show', $presentation->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
                             Avoir plus de détails
                         </a>
-                        @endforeach
                         
-                        @else
-                        <h2 class="mt-3 fs-1 fw-bold">No Posts Yet</h2>
-                       
-                        <p class="mt-4 mb-0 clr-555">
-                            no content yet
-                        </p>
-                        <a href="#" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
-                            Avoir plus de détails
-                        </a>
-                        @endif
+                        
                     </div>
                 </div>
             </div>
+            @endforeach
+            @else    
+            <div class="mb-5 col-lg-6 me-lg-5 mb-lg-0 position-relative d-flex justify-content-center " id="translate-left">
+                <img class="mt-3 img-pres h-100 me-auto mt-lg-0 b-15" src="#" alt="" loading="lazy" style="object-fit: cover;border-top: 5px solid #21759B;border-left: 5px solid #21759B;">
+            </div>
+            <div style="margin: 0 auto;">
+                <div class="mt-3 d-flex flex-column mt-lg-0">
+                    <h5 class="pb-2 mb-0 text-primary d-flex align-items-center text-capitalize fw-600">
+                        <div class="rounded-circle bg-primary" style="width: 10px;height: 10px;"></div>
+                        <div class="bg-primary me-2" style="width: 50px;height: 2px;"></div>
+                        Présentation
+                    </h5>
+                    
+                    <h2 class="mt-3 fs-1 fw-bold">No Posts Yet</h2>
+                   
+                    <p class="mt-4 mb-0 clr-555">
+                        no content yet
+                    </p>
+                    <a href="#" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
+                        Avoir plus de détails
+                    </a>
+                    
+                </div>
+            @endif     
         </section>
         <section class="py-4 px-sm-2 px-lg-4" style="background: #f5f6f9;">
             <div class="d-flex flex-column align-items-center position-relative">
@@ -318,89 +333,29 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="py-4">
+                                @foreach ($services as $service)
                                 <div class="overflow-visible rounded card card-services position-relative" style="height: 380px;border-top: 3px solid #21759B;">
                                     <div class="w-100 h-max img-services">
-                                        <img class="card-img-top obj-cover" src="assets/images/conseil.jpg" alt="" style="height: 200px;">
+                                        <img class="card-img-top obj-cover" src="{{ $service->getFirstMedia('service-images')->getUrl() }}" alt="" style="height: 200px;">
                                     </div>
+                                    
                                     <div class="pt-0 border-0 card-body">
                                         <div class="p-1 mb-3 d-flex justify-content-center mt-n5 position-relative" style="z-index: 3;">
                                             <div class="p-2 w-max h-max rounded-circle bg-primary">
-                                                <img class="" src="{{ asset('images/check.png') }}" style="filter: brightness(0) invert(1);height: 50px;width: 50px;">
+                                                <img class="" src="{{ asset('images/check.png ') }}" alt="" style="filter: brightness(0) invert(1);height: 50px;width: 50px;">
                                             </div>
                                         </div>
-                                        @foreach ($services as $service)
+                                        
                                         <a href="details-services.html">
                                             <h4 class="text-center fw-600">{{ $service->title }}</h4>
                                         </a>
                                         <p class="text-center line-clamp2">{{ $service->content }}</p>
                                         <a href="details-services.html" class="px-4 py-2 b-15 btn-ms position-absolute" style="bottom: -20px;left: 50%;transform: translateX(-50%);">Voir service</a>
-                                        @endforeach
-                                       
+                    
                                     </div>
+                                    
                                 </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="py-4">
-                                <div class="overflow-visible rounded card card-services position-relative" style="height: 380px;border-top: 3px solid #21759B;">
-                                    <div class="w-100 h-max img-services">
-                                        <img class="card-img-top obj-cover" src="assets/images/truck.webp " alt="" style="height: 200px;">
-                                    </div>
-                                    <div class="pt-0 border-0 card-body">
-                                        <div class="p-1 mb-3 d-flex justify-content-center mt-n5 position-relative" style="z-index: 3;">
-                                            <div class="p-2 w-max h-max rounded-circle bg-primary">
-                                                <img class="" src="{{ asset('images/check.png ') }}" style="filter: brightness(0) invert(1);height: 50px;width: 50px;">
-                                            </div>
-                                        </div>
-                                        <a href="location.html">
-                                            <h4 class="text-center fw-600">Location de Véhicule</h4>
-                                        </a>
-                                        <p class="text-center line-clamp2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, labore.</p>
-                                        <a href="location.html" class="px-4 py-2 b-15 btn-ms position-absolute" style="bottom: -20px;left: 50%;transform: translateX(-50%);">Voir service</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="py-4">
-                                <div class="overflow-visible rounded card card-services position-relative" style="height: 380px;border-top: 3px solid #21759B;">
-                                    <div class="w-100 h-max img-services">
-                                        <img class="card-img-top obj-cover" src="assets/images/secu.jpg {{ asset('images/secu.jpg ') }}" alt="" style="height: 200px;">
-                                    </div>
-                                    <div class="pt-0 border-0 card-body">
-                                        <div class="p-1 mb-3 d-flex justify-content-center mt-n5 position-relative" style="z-index: 3;">
-                                            <div class="p-2 w-max h-max rounded-circle bg-primary">
-                                                <img class="" src="{{ asset('images/check.png ') }}" style="filter: brightness(0) invert(1);height: 50px;width: 50px;">
-                                            </div>
-                                        </div>
-                                        <a href="details-services.html">
-                                            <h4 class="text-center fw-600">Sécurité</h4>
-                                        </a>
-                                        <p class="text-center line-clamp2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, labore.</p>
-                                        <a href="details-services.html" class="px-4 py-2 b-15 btn-ms position-absolute" style="bottom: -20px;left: 50%;transform: translateX(-50%);">Voir service</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="py-4">
-                                <div class="overflow-visible rounded card card-services position-relative" style="height: 380px;border-top: 3px solid #21759B;">
-                                    <div class="w-100 h-max img-services">
-                                        <img class="card-img-top obj-cover" src="{{ asset('images/taxi.jpg') }}" alt="" style="height: 200px;">
-                                    </div>
-                                    <div class="pt-0 border-0 card-body">
-                                        <div class="p-1 mb-3 d-flex justify-content-center mt-n5 position-relative" style="z-index: 3;">
-                                            <div class="p-2 w-max h-max rounded-circle bg-primary">
-                                                <img class="" src="{{ asset('images/check.png ') }}" style="filter: brightness(0) invert(1);height: 50px;width: 50px;">
-                                            </div>
-                                        </div>
-                                        <a href="transport.html">
-                                            <h4 class="text-center fw-600">Transport</h4>
-                                        </a>
-                                        <p class="text-center line-clamp2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, labore.</p>
-                                        <a href="transport.html" class="px-4 py-2 b-15 btn-ms position-absolute" style="bottom: -20px;left: 50%;transform: translateX(-50%);">Voir service</a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -455,7 +410,7 @@
                             <p class="my-0 clr-555">No reasons yet</p>
                         </div>
                         @endif
-                        <a href="presentation.html" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
+                        <a href="{{ route('presentation.show', $presentation->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
                             Avoir plus de détails
                         </a>
 
@@ -463,7 +418,7 @@
                 </div>
 
                 <div class="mb-5 col-lg-6 ms-lg-5 mb-lg-0 position-relative d-flex justify-content-center " id="translate-left">
-                    <img class="mt-3 img-pres h-100 ms-auto mt-lg-0 b-15" src="assets/images/slide1.jpg" alt="" loading="lazy" style="object-fit: cover;border-bottom: 5px solid #0c4c8a;border-right: 5px solid #0c4c8a;">
+                    <img class="mt-3 img-pres h-100 ms-auto mt-lg-0 b-15" src="{{ asset('images/slide1.jpg ') }}" alt="" loading="lazy" style="object-fit: cover;border-bottom: 5px solid #0c4c8a;border-right: 5px solid #0c4c8a;">
                 </div>
             </div>
         </section>
@@ -473,66 +428,21 @@
                 <div class="bg-primary" style="height: 5px;width: 60px;"></div>
             </div>
             <div class="swiper-container mySwiper2">
-                @foreach ($partenaires as $partenaire )
+                
                 <div class="swiper-wrapper">
+                    @foreach ($partenaires as $partenaire )
                     <a href="#" class="swiper-slide">
                         <div class="p-3">
                             <div class="px-5 py-3 overflow-hidden client-anim position-relative">
-                                <img class="client-img1" src="{{  $partenaire->getMedia() }}" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                                <img class="client-img2" src="assets/images/safex.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
+                                <img class="client-img1" src="{{  $partenaire->getFirstMedia('partenaire-images')->getUrl() }}" alt="" style="object-fit:contain;width: 100px;height: 100px;">
+                                <img class="client-img2" src="{{  $partenaire->getFirstMedia('partenaire-images')->getUrl() }}" alt="" style="object-fit:contain;width: 100px;height: 100px;">
                             </div>
                         </div>
                     </a>
-                    <a href="#" class="swiper-slide">
-                        <div class="p-3">
-                            <div class="px-5 py-3 overflow-hidden client-anim position-relative">
-                                <img class="client-img1" src="assets/images/z-bric.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                                <img class="client-img2" src="assets/images/z-bric.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="swiper-slide">
-                        <div class="p-3">
-                            <div class="px-5 py-3 overflow-hidden client-anim position-relative">
-                                <img class="client-img1" src="assets/images/z-express.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                                <img class="client-img2" src="assets/images/z-express.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="swiper-slide">
-                        <div class="p-3">
-                            <div class="px-5 py-3 overflow-hidden client-anim position-relative">
-                                <img class="client-img1" src="assets/images/z-group.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                                <img class="client-img2" src="assets/images/z-group.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="swiper-slide">
-                        <div class="p-3">
-                            <div class="px-5 py-3 overflow-hidden client-anim position-relative">
-                                <img class="client-img1" src="assets/images/z-shop.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                                <img class="client-img2" src="assets/images/z-shop.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="swiper-slide">
-                        <div class="p-3">
-                            <div class="px-5 py-3 overflow-hidden client-anim position-relative">
-                                <img class="client-img1" src="assets/images/z-vite.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                                <img class="client-img2" src="assets/images/z-vite.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="swiper-slide">
-                        <div class="p-3">
-                            <div class="px-5 py-3 overflow-hidden client-anim position-relative">
-                                <img class="client-img1" src="assets/images/safex.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                                <img class="client-img2" src="assets/images/safex.png" alt="" style="object-fit:contain;width: 100px;height: 100px;">
-                            </div>
-                        </div>
-                    </a>
+                    @endforeach
+                   
                 </div>
-                @endforeach
+                
                 
             </div>
             <div class="swiper-button-prev swiper-button-prev2" style="left: 35px;top: 65%;transform: scale(.85);"></div>

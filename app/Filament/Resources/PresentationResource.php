@@ -15,6 +15,7 @@ use Filament\Tables;
 class PresentationResource extends Resource
 {
     protected static ?string $model = Presentation::class;
+    protected static ?int $navigationSort = -4;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -31,7 +32,11 @@ class PresentationResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('presentation-image')
+                ->label('Image')
+                ->collection('presentation-images'),
                 Tables\Columns\TextColumn::make('description'),
+                
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -79,7 +84,7 @@ class PresentationResource extends Resource
                     $layout::make()
                         ->schema([
                             SpatieMediaLibraryFileUpload::make('media')
-                                        ->collection('service-images')
+                                        ->collection('presentation-images')
                                         ->multiple()
                                         ->maxFiles(5)
                         ])
