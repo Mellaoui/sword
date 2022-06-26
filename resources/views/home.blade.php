@@ -410,10 +410,11 @@
                             <p class="my-0 clr-555">No reasons yet</p>
                         </div>
                         @endif
-                        <a href="{{ route('presentation.show', $presentation->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
-                            Avoir plus de détails
-                        </a>
-
+                        @if (count($presentations) > 0)
+                            <a href="{{ route('presentation.show', $presentation->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
+                                Avoir plus de détails
+                            </a>
+                        @endif
                     </div>
                 </div>
 
