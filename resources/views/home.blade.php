@@ -286,7 +286,7 @@
                             <br> <br>
                         {{ $presentation->description }}
                         </p>
-                        <a href="{{ route('presentation.show', $presentations->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
+                        <a href="{{ route('presentation.show', $presentation->id) }}" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
                             Avoir plus de détails
                         </a>
                         @endforeach
@@ -296,10 +296,6 @@
                        
                         <p class="mt-4 mb-0 clr-555">
                             no content yet
-                            <br> <br>
-                            Présente dans plus de 04 pays, SWORD Corporation offre un éventail large d’activités et de services. Son objectif principal est d’optimiser les projets de ses clients tout en permettant le développement professionnel de ses consultants.
-                            <br> <br>
-                            SWORD Corporation est spécialisée dans différents domaines tels que, le consulting, le portage salarial, le recrutement, la logistique, le transport sécurités, la sécurité et gardiennage, l’assistance technique et le déploiement des solutions.
                         </p>
                         <a href="#" class="px-4 py-2 mt-4 text-white btn btn-ms b-15 w-max position-relative">
                             Avoir plus de détails

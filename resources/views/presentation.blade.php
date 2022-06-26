@@ -221,7 +221,7 @@ background-size: cover;padding: 55px 0;;overflow: hidden;height: 300px;">
                             <div class="bg-primary me-2" style="width: 50px;height: 2px;"></div>
                             Présentation
                         </h5>
-                        <h2 class="mt-3 fs-1 fw-bold">Qui sommes Nous?</h2>
+                        <h2 class="mt-3 fs-1 fw-bold">{{$presentation->title}}</h2>
                         <p class="mt-4 mb-0 clr-555">
                             {{$presentation->title}}<br>
                             {{ $presentation->description }}
