@@ -109,7 +109,7 @@
                             </a>
                         </li>
                         <li class="nav-item me-lg-4">
-                            <a class="nav-link fs-6 text-header" href="presentation.html">
+                            <a class="nav-link fs-6 text-header" href="#">
                                 Présentation
                             </a>
                         </li>
@@ -178,12 +178,12 @@
                             </ul>
                         </li>
                         <li class="nav-item me-lg-4">
-                            <a class="nav-link fs-6 ps-0 text-header" href="blog.html">
+                            <a class="nav-link fs-6 ps-0 text-header" href="/blog">
                                 Blog
                             </a>
                         </li>
                         <li class="nav-item me-lg-4">
-                            <a class="nav-link fs-6 ps-0 text-header" href="contact.html">
+                            <a class="nav-link fs-6 ps-0 text-header" href="/contact">
                                 Contact
                             </a>
                         </li>

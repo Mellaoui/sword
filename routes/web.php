@@ -23,6 +23,14 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/services', function(){
+    return view('services');  
+});
+
+Route::get('/transport', function(){
+    return view('transport');  
+});
+
 Route::get('/', [HomeController::class,'index']);
 Route::get('/blog', [BlogController::class,'index']);
 Route::get('/{id}', [HomeController::class,'show'])->name('presentation.show');
