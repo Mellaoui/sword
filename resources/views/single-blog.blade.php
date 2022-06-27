@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -192,56 +193,115 @@
         </nav>
     </header>
 
-    <section class="py-5 breadcrumb-container d-flex flex-column justify-content-center position-relative" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.4)), url('assets/images/hand.jpg') center ;
+    <section class="py-5 breadcrumb-container d-flex flex-column justify-content-center position-relative" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.4)), url('../assets/images/hand.jpg') center ;
 background-size: cover;padding: 55px 0;;overflow: hidden;height: 300px;">
         <nav aria-label="breadcrumb">
             <div class="d-flex flex-column align-items-center">
-                <h2 style="color: #fff;">Blog</h2>
+                <h2 style="color: #fff;">Details Articles</h2>
                 <ol class="breadcrumb" style="background: unset;">
                     <li class=""><a class="text-white" href="/">Accueil</a></li>
                     <span class="mx-2 text-white">/</span>
-                    <li class="" style="color: #fff;" aria-current="page">Blog</li>
+                    <li class="" style="color: #fff;" aria-current="page">Details Articles</li>
                 </ol>
             </div>
         </nav>
     </section>
-    <div>
-        <div class="py-5 px-sm-5 px-2">
-            <div class="d-flex flex-wrap">
-                @if (count($posts) > 0)
-                @foreach ($posts as $post)
-                <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center mb-5 pe-sm-1">
-                    <a href="{{ route('blog.show', $post->id) }}" class="card card-blog border-0 position-relative overflow-visible b-15" style="background: url('{{ $post->getFirstMedia('blog-images')->getUrl() }}') no-repeat center;background-size: cover;">
-                        <div class="overlay-slide w-100 h-100 b-15"></div>
-                        <div class="card-body position-absolute border-0 pt-0 w-100 h-100" style="top: 0;left: 0;z-index: 5;">
-                            <div class="mt-4 ms-3">
-                                <p class="text-white my-0">Catégories</p>
-                            </div>
-                            <div class="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-content-center px-5 top-0" style="left: 0;">
-                                <p class="fs-15 text-white text-center">{{ $post->created_at }}</p>
-                                <h2 class="text-white line-clamp2 fs-5 text-center fw-600" style="line-height: 1.8rem">{{ $post->title }}</h2>
-                            </div>
-                           
-                            <div class="d-flex align-items-center position-absolute w-100 ps-4" style="left: 0;bottom: 1.5rem;">
-                                <img src="{{ $post->getFirstMedia('blog-images')->getUrl() }}" class="rounded-circle obj-cover me-2" alt="" style="width: 50px;height: 50px;">
+    <section class="section h-100">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-8 py-5">
+                
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="position-relative">
+                                <div class="swiper-container mySwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="{{ $post->getFirstMedia('blog-images')->getUrl() }}" alt="" class="img-fluid w-100" style="height: 420px;object-fit: cover;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="./assets/images/slide2.jpg" alt="" class="img-fluid w-100" style="height: 420px;object-fit: cover;">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="./assets/images/slide3.jpg" alt="" class="img-fluid w-100" style="height: 420px;object-fit: cover;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination" style="top: 425px;height: max-content;"></div>
+                                <div class="d-flex align-items-baseline mt-4">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-calendar-check text-primary me-2" style="font-size: 1.1rem;"></i>
+                                        <p class="text-black my-0 fs-14">{{ $post->created_at }}</p>
+                                    </div>
+                                   
+                                </div>
+                                <h1 class="my-4 fs-2 fw-600">{{ $post->title }}</h1>
+                                <p class="my-4">{{ $post->content }}</p>
+                                <div class="my-5 d-flex flex-column">
+                                    <h5 class="d-inline-block me-3 mb-3">Partager:</h5>
+                                    <ul class="list-inline d-inline-block social-details d-flex flex-wrap gap-2">
+                                        <li><a class="rounded-circle d-flex justify-content-center btn-wm" href="http://www.facebook.com/sharer.php?u=#" target="_blank" style="border: 1px solid #ddd;padding: 13px 15px;"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a class="rounded-circle d-flex justify-content-center btn-wm" href="https://twitter.com/share?url=#" target="_blank" style="border: 1px solid #ddd;padding: 13px 13px;"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a class="rounded-circle d-flex justify-content-center btn-wm" href="http://www.linkedin.com/shareArticle?url=#" target="_blank" style="border: 1px solid #ddd;padding: 13px 13px;"><i class="fab fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </a>
-                </div>
-                @endforeach
-                    @else
-                    <div class="col-lg-4 col-md-6 col-12 d-flex justify-content-center mb-5 pe-sm-1">
-                        <a href="details-blog.html" class="card card-blog border-0 position-relative overflow-visible b-15" style="background: url('../assets/images/slide1.jpg') no-repeat center;background-size: cover;">
-                            <div class="overlay-slide w-100 h-100 b-15"></div>
-                            <div class="card-body position-absolute border-0 pt-0 w-100 h-100" style="top: 0;left: 0;z-index: 5;">
-                                <H3>No posts yet</H3>
-                            </div>
-                        </a>
                     </div>
-                @endif
+                </div>
+                <div class="col-lg-4 mx-auto mx-lg-0 col-12 rounded px-0" style="border-left: 1px solid #e4e7ee;">
+                    <div class="col-12 px-4">
+                        <div class="row ms-auto pt-lg-5">
+                            <div class="row d-flex flex-column">
+                                <h5 class="mt-3 pb-3 px-0 d-flex align-items-center fw-600">
+                                    <div class="rounded-circle bg-primary" style="width: 10px;height: 10px;"></div>
+                                    <div class="bg-primary me-2" style="width: 50px;height: 2px;"></div>
+                                    Les autres Articles
+                                </h5>
+                                <div class="d-flex mt-2 pb-3 px-0 details-point">
+                                    <img class="me-3 mb-3 rounded-circle obj-cover" src="./assets/images/slide1.jpg" width="70" height="70" alt="">
+                                    <div class="d-flex flex-column justify-content-around" style="height: 75px;">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-calendar-check text-primary me-2"></i>
+                                            <p class="text-black my-0 fs-14">15 Janvier 2044</p>
+                                        </div>
+                                        <a href="#">
+                                            <h6 class="fw-600">Article 01</h6>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-2 pb-3 px-0 details-point">
+                                    <img class="me-3 mb-3 rounded-circle obj-cover" src="./assets/images/slide2.jpg" width="70" height="70" alt="">
+                                    <div class="d-flex flex-column justify-content-around" style="height: 75px;">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-calendar-check text-primary me-2"></i>
+                                            <p class="text-black my-0 fs-14">15 Janvier 2044</p>
+                                        </div>
+                                        <a href="#">
+                                            <h6 class="fw-600">Article 02</h6>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-2 pb-3 px-0 details-point">
+                                    <img class="me-3 mb-3 rounded-circle obj-cover" src="./assets/images/slide3.jpg" width="70" height="70" alt="">
+                                    <div class="d-flex flex-column justify-content-around" style="height: 75px;">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-calendar-check text-primary me-2"></i>
+                                            <p class="text-black my-0 fs-14">15 Janvier 2044</p>
+                                        </div>
+                                        <a href="#">
+                                            <h6 class="fw-600">Article 03</h6>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <div class="bg-primary px-3 py-5">
         <div class="d-flex flex-md-row flex-column align-items-center justify-content-center container-md">
@@ -365,7 +425,18 @@ background-size: cover;padding: 55px 0;;overflow: hidden;height: 300px;">
 
     <script src="assets/js/app.bundle.js"></script>
 
-
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            loop: true,
+            autoplay: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
     <script>
         $(function() {
             $(window).scroll(function() {
@@ -379,4 +450,5 @@ background-size: cover;padding: 55px 0;;overflow: hidden;height: 300px;">
         });
     </script>
 </body>
+
 </html>

@@ -591,6 +591,7 @@
                                 </a>
                             </div>
                         </div>
+                        
                         <div class="swiper-slide">
                             <div class="py-4">
                                 <a href="details-blog.html" class="overflow-visible border-0 card card-blog position-relative b-15" style="background: url('../assets/images/slide1.jpg') no-repeat center;background-size: cover;">

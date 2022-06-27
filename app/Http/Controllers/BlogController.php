@@ -12,4 +12,11 @@ class BlogController extends Controller
         
         return view('blog',['posts' => $posts]);
     }
+
+
+    public function show(Blog $blog, $id){
+
+        $post = Blog::find($id);
+        return view('single-blog')->with('post', $post);
+    }
 }
